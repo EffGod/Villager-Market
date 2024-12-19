@@ -39,7 +39,7 @@ public class VillagerMarketContainer extends Container {
     VillagerMarketContainer(World world, BlockPos pos, EntityPlayer player) {
         this.player = player;
 
-        int radius = 16;
+        int radius = 200;
         Village village = world.getVillageCollection().getNearestVillage(pos, radius);
         if (village != null) {
             pos = village.getCenter();
