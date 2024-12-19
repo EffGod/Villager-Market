@@ -12,12 +12,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # Step 2: Set up JDK
+    # Step 2: Set up Java 8
     - name: Set up JDK
       uses: actions/setup-java@v3
       with:
-        java-version: '17' # Specify the Java version
-        distribution: 'temurin' # Options: temurin, zulu, adopt, etc.
+        java-version: '8'
+        distribution: 'temurin' # Temurin is a commonly used JDK distribution
 
     # Step 3: Grant execute permissions for Gradle Wrapper
     - name: Grant execute permission for Gradlew
