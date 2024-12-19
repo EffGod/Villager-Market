@@ -1,0 +1,28 @@
+name: Build Gradle Java Project
+
+on:
+  workflow_dispatch: # Enables manual triggering of the workflow
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Check out the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Step 2: Set up JDK
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17' # Specify the Java version
+        distribution: 'temurin' # Options: temurin, zulu, adopt, etc.
+
+    # Step 3: Grant execute permissions for Gradle Wrapper
+    - name: Grant execute permission for Gradlew
+      run: chmod +x ./gradlew
+
+    # Step 4: Build the project
+    - name: Build with Gradle
+      run: ./gradlew build
