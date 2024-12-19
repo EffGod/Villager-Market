@@ -1,7 +1,7 @@
 name: Build Gradle Java Project
 
 on:
-  workflow_dispatch: # Enables manual triggering of the workflow
+  workflow_dispatch:
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '8'
-        distribution: 'temurin' # Temurin is a commonly used JDK distribution
+        distribution: 'temurin'
 
     # Step 3: Grant execute permissions for Gradle Wrapper
     - name: Grant execute permission for Gradlew
@@ -26,3 +26,10 @@ jobs:
     # Step 4: Build the project
     - name: Build with Gradle
       run: ./gradlew build
+
+    # Step 5: Upload the built JAR as an artifact
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: mod-jar
+        path: build/libs/*.jar
